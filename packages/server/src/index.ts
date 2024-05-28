@@ -34,6 +34,24 @@ app.ws("/mml-document", (ws) => {
   mmlDocumentServer.handle(ws);
 });
 
+app.ws("/messages", (ws) => {
+  ws.on('message', (msg) => {
+    console.log("Received message:", msg);
+    // Handle the incoming message
+    ws.send("Message received: " + msg);
+  });
+
+  ws.on('close', () => {
+    console.log("WebSocket connection closed");
+  });
+
+  ws.on('error', (error) => {
+    console.error("WebSocket error:", error);
+  });
+
+  console.log("New WebSocket connection established");
+});
+
 // Serve assets with CORS allowing all origins
 app.use("/assets/", cors(), expressStatic(path.resolve(dirname, "../assets/")));
 // Specify the avatar to use here:
