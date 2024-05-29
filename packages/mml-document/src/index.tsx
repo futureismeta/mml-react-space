@@ -9,20 +9,6 @@ function App() {
     const host = window.location.host;
 
     const ws = new WebSocketClient(`ws://127.0.0.1:8080/messages`);
-    ws.connect(
-        (data) => {
-            console.log("Received message:", data);
-        },
-        (error) => {
-            console.error("WebSocket error:", error);
-        },
-        () => {
-            console.log("WebSocket connection established");
-        },
-        () => {
-            console.log("WebSocket connection closed");
-        }
-    )
 
     return (
         <m-group ry={180} z={10}>
@@ -32,7 +18,11 @@ function App() {
                 y={2}
                 color="red"
                 onClick={() => {
-                    ws.sendMessage("hello")
+                    ws.sendMessage(
+                        JSON.stringify({
+                            type: "connect"
+                        })
+                    )
                 }}
             ></m-cube>
         </m-group>

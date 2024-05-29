@@ -1,7 +1,6 @@
 import {Networked3dWebExperienceClient} from "@mml-io/3d-web-experience-client";
-import {WebSocketClient} from "./websocket";
-import {createModal} from "@rabby-wallet/rabbykit";
 import {rabbyKit} from "./ethereum";
+import {BaseMessage} from "../../shared/MessageTypes";
 
 const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
 const host = window.location.host;
@@ -19,28 +18,30 @@ const app = new Networked3dWebExperienceClient(holder, {
     jogAnimationFileUrl: "/web-client/assets/models/anim_jog.glb",
     sprintAnimationFileUrl: "/web-client/assets/models/anim_run.glb",
   },
-  hdrJpgUrl: "/web-client/assets/hdr/puresky_2k.jpg",
+  // hdrJpgUrl: "/web-client/assets/hdr/puresky_2k.jpg",
+  hdrJpgUrl: "/web-client/assets/hdr/industrial_sunset_puresky_4k.jpg",
   mmlDocuments: [{ url: `${protocol}//${host}/mml-document` }],
 });
 app.update();
 
-//open RabbyKit modal
-rabbyKit.open();
-
-const wsClient = new WebSocketClient(`${protocol}//${host}/messages`);
-wsClient.connect(
-(data) => {
-
+const wsUrl = `${protocol}//${host}/messages`;
+console.log(wsUrl)
+console.log(wsUrl)
+console.log(wsUrl)
+console.log(wsUrl)
 
 
-  },
-  (error) => {
-    console.error("WebSocket error:", error);
-  },
-  () => {
-    console.log("WebSocket connection established");
-  },
-  () => {
-    console.log("WebSocket connection closed");
-  }
-);
+const wsClient = new WebSocket(wsUrl);
+
+wsClient.onopen = () => {
+  console.log("WebSocket connection opened");
+};
+
+wsClient.onmessage = (event: BaseMessage) => {
+
+    console.log("Received message:", event.data);
+    const message = JSON.parse(event.data);
+    if (message.type === "connect") {
+        rabbyKit.open();
+    }
+};

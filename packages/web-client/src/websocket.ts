@@ -1,5 +1,5 @@
 class WebSocketClient {
-    private url: string;
+    private readonly url: string;
     private ws: WebSocket | null;
 
     constructor(url: string) {
@@ -16,11 +16,15 @@ class WebSocketClient {
         this.ws = new WebSocket(this.url);
 
         this.ws.onopen = () => {
-            console.log("WebSocket connection established");
             if (onOpen) onOpen();
+            console.log("Web Client: WebSocket connection established");
         };
 
         this.ws.onmessage = (event: MessageEvent) => {
+            console.log(event)
+            console.log(event)
+            console.log(event)
+            console.log(event)
             console.log("Received message:", event.data);
             if (onMessage) onMessage(event.data);
         };

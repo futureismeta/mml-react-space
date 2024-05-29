@@ -34,14 +34,20 @@ app.ws("/mml-document", (ws) => {
   mmlDocumentServer.handle(ws);
 });
 
+const clients = new Set();
+
 app.ws("/messages", (ws) => {
   ws.on('message', (msg) => {
     console.log("Received message:", msg);
-    // Handle the incoming message
-    ws.send("Message received: " + msg);
+    clients.forEach(client => {
+      if (client.readyState === ws.OPEN) {
+        client.send(msg);
+      }
+    });
   });
 
   ws.on('close', () => {
+    clients.delete(ws);
     console.log("WebSocket connection closed");
   });
 
@@ -49,6 +55,7 @@ app.ws("/messages", (ws) => {
     console.error("WebSocket error:", error);
   });
 
+  clients.add(ws);
   console.log("New WebSocket connection established");
 });
 
