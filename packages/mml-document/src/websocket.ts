@@ -1,20 +1,29 @@
 class WebSocketClient {
-    private readonly url: string;
-    private readonly ws: WebSocket | null;
+    private static instance: WebSocketClient | null = null;
+    private ws: WebSocket;
 
-    constructor(url: string) {
-        this.url = url;
-        this.ws = new WebSocket(this.url);
+    private constructor(url: string = "ws://default.url") {
+        this.ws = new WebSocket(url);
     }
+
+    static getInstance(url?: string): WebSocketClient {
+        if (!WebSocketClient.instance) {
+            WebSocketClient.instance = new WebSocketClient(url);
+        }
+        return WebSocketClient.instance;
+    }
+
     sendMessage(message: string) {
-        if (this.ws) {
-            console.log("sent message")
+        if (this.ws.readyState === WebSocket.OPEN) {
+            console.log("Sent message:", message);
             this.ws.send(message);
+        } else {
+            console.error("WebSocket is not open. Ready state is:", this.ws.readyState);
         }
     }
 
     disconnect() {
-        if (this.ws) {
+        if (this.ws.readyState === WebSocket.OPEN || this.ws.readyState === WebSocket.CONNECTING) {
             this.ws.close();
         }
     }

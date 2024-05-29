@@ -8,8 +8,8 @@ import { createModal } from "@rabby-wallet/rabbykit";
 const { chains, publicClient, webSocketPublicClient } = configureChains(
     [mainnet, arbitrum, bsc, optimism, polygon],
     [
-        alchemyProvider({ apiKey: "yourAlchemyApiKey" }),
-        infuraProvider({ apiKey: "yourInfuraApiKey" }),
+        alchemyProvider({ apiKey: "CZMa1z-5xUDTZcKqeSsRfcWS1GxwLlte" }),
+        // infuraProvider({ apiKey: "yourInfuraApiKey" }),
         publicProvider(),
     ]
 );
