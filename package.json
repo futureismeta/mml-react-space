@@ -43,6 +43,8 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
+    "@inworld/web-core": "^2.5.0",
+    "@inworld/web-sdk": "^1.9.3",
     "@rabby-wallet/rabbykit": "^0.0.5",
     "@uniswap/sdk": "^3.0.3",
     "@wagmi/core": "^1.4.13",

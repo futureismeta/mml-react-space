@@ -65,6 +65,7 @@ app.use("/assets/", cors(), expressStatic(path.resolve(dirname, "../assets/")));
 const characterDescription: CharacterDescription = {
   // Option 1 (Default) - Use a GLB file directly
   meshFileUrl: "/assets/models/bot.glb", // This is just an address of a GLB file
+  // meshFileUrl: "/assets/models/avatar.glb", // This is just an address of a GLB file
   // Option 2 - Use an MML Character from a URL
   // mmlCharacterUrl: "https://...",
   // Option 3 - Use an MML Character from a string
