@@ -1,3 +1,7 @@
+
+
+`npm link  @mml-io/3d-web-experience-client  @mml-io/3d-web-experience-server @mml-io/3d-web-user-interface --verbose`
+
 # MML React Space
 
 ![Disco Floor](./images/disco-floor.png)

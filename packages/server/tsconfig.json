@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "noImplicitAny": true,
-    "module": "esnext",
+    "module": "ES2022",
     "target": "es2022",
     "jsx": "react",
     "lib": ["es2022", "dom"],
@@ -16,5 +16,8 @@
     "noEmit": true,
     "baseUrl": "."
   },
-  "include": ["./src/**/*.ts"]
+  "include": [
+    "./src/**/*.ts",
+    "src/types/express-ws.d.ts"
+  ]
 }

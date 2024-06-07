@@ -14,8 +14,14 @@
     "lint:fix": "eslint \"./src/**/*.{ts,tsx}\" --fix"
   },
   "dependencies": {
+    "@inworld/web-core": "^2.6.0",
     "@mml-io/3d-web-experience-client": "0.16.0",
-    "three": "^0.164.1"
+    "@rabby-wallet/rabbykit": "^0.0.5",
+    "@uniswap/sdk": "^3.0.3",
+    "@wagmi/core": "^2.10.5",
+    "ethers": "^6.13.0",
+    "three": "^0.164.1",
+    "viem": "^2.13.7"
   },
   "devDependencies": {
     "@types/three": "^0.164.1"

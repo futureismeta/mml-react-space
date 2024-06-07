@@ -1,12 +1,13 @@
-import {createModal} from "@rabby-wallet/rabbykit";
-import {config} from "./config";
-import {chains} from "./chains";
+import { createModal } from "@rabby-wallet/rabbykit";
 
-export const client = config.getPublicClient()
+import { chains } from "./chains";
+import { config } from "./config";
+
+export const client = config.getPublicClient();
 
 export const rabbyKit = createModal({
-    chains,
-    wagmi: config,
-    projectId: "fc143c6c5401275fcef08b59b2dcc6b5",
-    appName: "Metaverse"
+  chains,
+  wagmi: config,
+  projectId: "<<--Some ID -->>",
+  appName: "",
 });

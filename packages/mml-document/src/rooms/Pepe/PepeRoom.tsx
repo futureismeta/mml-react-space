@@ -1,27 +1,21 @@
-import {BuildingFloor} from "./Floor";
-import {PepeStuff} from "./PepeStuff";
-import {Trees} from "./Trees";
-import {GroundFloor} from "./GroundFloor";
-import {TwistingWalls} from "./TwistingWalls";
 import * as React from "react";
 
+import { BuildingFloor } from "./Floor";
+import { GroundFloor } from "./GroundFloor";
+import { PepeStuff } from "./PepeStuff";
+import { Trees } from "./Trees";
+import { TwistingWalls } from "./TwistingWalls";
+
 export const PepeRoom = () => {
-    return (
-        <m-group>
-            <m-light
-                type="point"
-                intensity="50"
-                debug="true"
-                y={5}
-            >
+  return (
+    <m-group>
+      <m-light type="point" intensity="50" debug="true" y={5}></m-light>
 
-            </m-light>
-
-            <BuildingFloor/>
-            <PepeStuff/>
-            <Trees/>
-            <GroundFloor/>
-            <TwistingWalls/>
-        </m-group>
-    );
-}
+      <BuildingFloor />
+      <PepeStuff />
+      <Trees />
+      <GroundFloor />
+      <TwistingWalls />
+    </m-group>
+  );
+};
